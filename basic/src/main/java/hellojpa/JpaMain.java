@@ -8,22 +8,31 @@ import javax.persistence.Persistence;
 public class JpaMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-
         EntityManager em = emf.createEntityManager();
-
         EntityTransaction tx = em.getTransaction();
         tx.begin();
 
         try {
+            Member member1 = new Member();
+            member1.setUsername("C");
 
-            Member member = em.find(Member.class, 150L);
-            member.setName("AAAAA");
+            Member member2 = new Member();
+            member2.setUsername("B");
 
-            em.clear();
+            Member member3 = new Member();
+            member3.setUsername("C");
 
-            Member member2 = em.find(Member.class, 150L);
+            System.out.println("===========");
 
-            System.out.println("========");
+            em.persist(member1);
+            em.persist(member2);
+            em.persist(member3);
+//
+
+            System.out.println("member1 = " + member1);
+            System.out.println("member2 = " + member2);
+            System.out.println("member3 = " + member3);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
