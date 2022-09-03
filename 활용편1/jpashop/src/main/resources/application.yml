@@ -1,24 +1,16 @@
 spring:
   datasource:
-<<<<<<< HEAD
     url: jdbc:h2:tcp://localhost/~/jpashop;
-=======
-    url: jdbc:h2:tcp://localhost/~/jpashop
->>>>>>> b944ef328ee3ce8102ef72c8f56ac19e4074b37d
     username: sa
     password:
     driver-class-name: org.h2.Driver
 
-<<<<<<< HEAD
 
-=======
->>>>>>> b944ef328ee3ce8102ef72c8f56ac19e4074b37d
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
-<<<<<<< HEAD
         show_sql: true
         format_sql: true
 
@@ -26,11 +18,3 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
   org.hibernate.type: trace
-=======
-#        show_sql: true
-        format_sql: true
-
-logging.level:
-  org.hibernate.SQL: debug
-#  org.hibernate.type: trace
->>>>>>> b944ef328ee3ce8102ef72c8f56ac19e4074b37d
