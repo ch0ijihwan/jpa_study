@@ -16,7 +16,7 @@ public class ItemRepository {
     public void save(Item item) {
         if (item.getId() == null) {
             em.persist(item);//item 은 영속화 되기 지언에 id가 없기 떄문에 새로 만든경우 영속화
-        }else {
+        } else {
             em.merge(item);
         }
     }
