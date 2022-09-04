@@ -4,6 +4,7 @@ import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class ItemController {
@@ -32,7 +34,7 @@ public class ItemController {
         book.setPrice(form.getPrice());
         book.setAuthor(form.getAuthor());
         book.setIsbn(form.getIsbn());
-        book.setPrice(form.getPrice());
+        book.setStockQuantity(form.getStockQuantity());
 
         itemService.saveItem(book);
         return "redirect:/";
@@ -48,6 +50,8 @@ public class ItemController {
     @GetMapping("items/{itemId}/edit")
     public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
         Book item = (Book) itemService.findOne(itemId);
+
+        ;
 
         BookForm bookForm = new BookForm();
         bookForm.setId(item.getId());
