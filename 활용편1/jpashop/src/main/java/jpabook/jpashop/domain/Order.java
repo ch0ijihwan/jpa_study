@@ -79,9 +79,11 @@ public class Order {
     }
 
     //==조회 로직==
-    public int getTotalPrice(){
-        return orderItems.stream()
-                .mapToInt(OrderItem::getTotalPrice)
-                .sum();
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (OrderItem orderItem : orderItems) {
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
     }
 }
