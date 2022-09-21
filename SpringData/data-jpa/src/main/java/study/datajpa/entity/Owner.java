@@ -10,7 +10,7 @@ import java.util.List;
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of = {"id","name"})
-public class Team {
+public class Owner {
 
     @Id @GeneratedValue
     @Column(name = "team_id")
@@ -21,7 +21,7 @@ public class Team {
     @OneToMany(mappedBy = "team")
     private List<Member> members = new ArrayList<>();
 
-    public Team(String name) {
+    public Owner(String name) {
         this.name = name;
     }
 }
