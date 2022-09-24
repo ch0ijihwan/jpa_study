@@ -1,7 +1,7 @@
 package study.datajpa.repository;
 
 import org.springframework.stereotype.Repository;
-import study.datajpa.entity.Owner;
+import study.datajpa.entity.Team;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,27 +14,27 @@ public class TeamJpaRepository {
     @PersistenceContext
     private EntityManager em;
 
-    public Owner save(Owner team) {
+    public Team save(Team team) {
         em.persist(team);
         return team;
     }
 
-    public void delete(Owner team) {
+    public void delete(Team team) {
         em.remove(team);
     }
 
-    public List<Owner> findAll() {
-        return em.createQuery("select  t from Owner t", Owner.class)
+    public List<Team> findAll() {
+        return em.createQuery("select  t from Team t", Team.class)
                 .getResultList();
     }
 
-    public Optional<Owner> findById(Long id) {
-        Owner team = em.find(Owner.class, id);
+    public Optional<Team> findById(Long id) {
+        Team team = em.find(Team.class, id);
         return Optional.ofNullable(team);
     }
 
     public long count() {
-        return em.createQuery("select count(t) from Owner t", Long.class)
+        return em.createQuery("select count(t) from Team t", Long.class)
                 .getSingleResult();
     }
 }

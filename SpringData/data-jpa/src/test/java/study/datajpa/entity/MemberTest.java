@@ -19,8 +19,8 @@ class MemberTest {
 
     @Test
     void testEntity() {
-        Owner teamA = new Owner("teamA");
-        Owner teamB = new Owner("teamB");
+        Team teamA = new Team("teamA");
+        Team teamB = new Team("teamB");
         em.persist(teamA);
         em.persist(teamB);
 

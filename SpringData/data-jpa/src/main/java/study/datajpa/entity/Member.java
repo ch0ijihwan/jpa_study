@@ -24,7 +24,7 @@ public class Member {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id")
-    private Owner team;
+    private Team team;
 
     public Member(String username) {
         this.username = username;
@@ -35,7 +35,7 @@ public class Member {
         this.age = age;
     }
 
-    public Member(String username, int age, Owner team) {
+    public Member(String username, int age, Team team) {
         this.username = username;
         this.age = age;
         if (team != null) {
@@ -43,7 +43,7 @@ public class Member {
         }
     }
 
-    public void changeTeam(Owner team) {
+    public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
     }
