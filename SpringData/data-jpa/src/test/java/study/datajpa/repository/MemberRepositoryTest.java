@@ -200,7 +200,7 @@ class MemberRepositoryTest {
     }
 
     @Test
-    void findMemberLazy(){
+    void findMemberLazy() {
         Team teamA = new Team("teamA");
         Team teamB = new Team("TeamB");
 
@@ -224,9 +224,35 @@ class MemberRepositoryTest {
         }
     }
 
+    @Test
+    void queryHint() {
+        Member member1 = new Member("member1", 10);
+        memberRepository.save(member1);
+        em.flush();
+        em.clear();
 
+        Member findMember = memberRepository.findReadOnlyByUsername("member1");
+        findMember.setUsername("member2");
 
+        em.flush();
+    }
+    
+    @Test
+    void lock() {
+        Member member1 = new Member("member1", 10);
+        memberRepository.save(member1);
+        em.flush();
+        em.clear();
 
+        List<Member> result = memberRepository.findLockByUsername("member1");
+
+        em.flush();
+    }
+
+    @Test
+    void callCustom() {
+        List<Member> result = memberRepository.findMemberCustom();
+    }
 
 //    @Test
 //    @Transactional
